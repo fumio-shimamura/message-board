@@ -1,3 +1,20 @@
 // Place all the styles related to the Messages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+ul { /*リスト要素ulを初期化*/
+    margin:0;
+    padding:0;
+}
+ul li { /*liも初期化し、ボーダーなどを指定*/
+    list-style:none;
+    margin:0px;
+    padding:10px;
+}
+
+/* span要素をブロック化しフロートでフォーム部品と横に並べる*/
+ul li span {
+    margin:0px;
+    display:block;
+    float:left;
+}
