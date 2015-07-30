@@ -2,19 +2,19 @@ class MessagesController < ApplicationController
   before_action :set_message, only: [:edit, :update, :destroy]
   
   def index
-  	@messages = Message.all
-  	@message = Message.new
+    @messages = Message.all
+    @message = Message.new
   end
   
   def create
     @message = Message.new(message_params)
     if @message.save
-	  redirect_to root_path, notice:'メッセージを保存しました'
-	else
-	  # メッセージが保存できなかった時
-	  @messages = Message.all
-	  flash.now[:alert] = "メッセージの保存に失敗しました。"
-	  render 'index'
+      redirect_to root_path, notice:'メッセージを保存しました'
+    else
+      # メッセージが保存できなかった時
+      @messages = Message.all
+      flash.now[:alert] = "メッセージの保存に失敗しました。"
+      render 'index'
     end
   end
 
@@ -22,13 +22,13 @@ class MessagesController < ApplicationController
   end
 
   def update
-  	if @message.update(message_params)
-  	  #成功したらトップページに
-  	  redirect_to root_path, notice: 'メッセージを編集しました'
-  	else
-  	  #失敗したら編集画面に
-  	  render 'edit'
-  	end
+    if @message.update(message_params)
+      #成功したらトップページに
+      redirect_to root_path, notice: 'メッセージを編集しました'
+    else
+      #失敗したら編集画面に
+      render 'edit'
+    end
   end
   
   def destroy
@@ -36,19 +36,18 @@ class MessagesController < ApplicationController
     redirect_to root_path, notice: 'メッセージを削除しました'
   end
   
-	private
-	def message_params
-		# params[:message]のパラメータで name , bodyのみを許可する。
+    private
+    def message_params
+        # params[:message]のパラメータで name , bodyのみを許可する。
     # 返り値は ex:) {name: "入力されたname" , body: "入力されたbody" }
     
     #ageも許可する
-		#params.require(:message).permit(:name, :body)
-		params.require(:message).permit(:name, :age, :body)
-		
-	end
+        #params.require(:message).permit(:name, :body)
+        params.require(:message).permit(:name, :age, :body)
+    end
 
   def set_message
-  	@message = Message.find(params[:id])
+    @message = Message.find(params[:id])
   end
   
 end
